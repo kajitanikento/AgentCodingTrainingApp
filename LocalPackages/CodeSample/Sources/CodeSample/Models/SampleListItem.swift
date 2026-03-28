@@ -1,0 +1,15 @@
+import Foundation
+
+public struct SampleListItem: Identifiable, Equatable, Hashable, Sendable {
+    public let id: UUID
+    public var title: String
+    public var isCompleted: Bool
+    public let createdAt: Date
+
+    public init(id: UUID, title: String, isCompleted: Bool, createdAt: Date) {
+        self.id = id
+        self.title = title
+        self.isCompleted = isCompleted
+        self.createdAt = createdAt
+    }
+}
