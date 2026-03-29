@@ -35,7 +35,7 @@ struct AgentCodingTrainingAppApp: App {
                     )
                 }
             case nil:
-                SampleListView()
+                TaskListView()
             }
         }
     }
