@@ -34,22 +34,15 @@ View
 
 ## エラーハンドリング方針
 
-### エラー型
+### レイヤーごとの責務
 
-```swift
-enum AppError: Error, LocalizedError {
-    case saveFailed
-    case loadFailed
-    case deleteFailed
+- **Repository層**: UI固有の情報を持たない汎用的な `Error` をスローする
+- **ViewModel層**: Repository からのエラーをキャッチし、UI表示用のメッセージにマッピングする。`LocalizedError` はViewModel層のみが持つ
 
-    var errorDescription: String? {
-        switch self {
-        case .saveFailed:   return "保存に失敗しました"
-        case .loadFailed:   return "データの読み込みに失敗しました"
-        case .deleteFailed: return "削除に失敗しました"
-        }
-    }
-}
+```
+Repository → throws Error（汎用）
+ViewModel  → catch してUI用メッセージにマッピング
+View       → ViewModelのエラーメッセージをインライン表示
 ```
 
 ### UIへの出し方
