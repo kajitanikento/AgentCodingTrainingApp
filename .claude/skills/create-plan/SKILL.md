@@ -26,10 +26,8 @@ spec と同じディレクトリに `plan.md` を生成する。
 ```
 # 実装計画
 
-## 実装方針
-- 実装順序の考え方（共有Modelを先に、画面単位でPRを作成する、など）
-
 ## 共有コンポーネント（PR #1）
+- ブランチ: `feature/shared-components`
 - 実装するファイル一覧（Model・Repository・共有UIコンポーネントなど）
 
 > [!IMPORTANT]
@@ -39,7 +37,7 @@ spec と同じディレクトリに `plan.md` を生成する。
 > 人間レビューポイント: テストケース一覧
 
 ## [画面名]（PR #2〜）
-各画面について以下を記述：
+- ブランチ: `feature/[画面名]`
 - Figma URL（specの画面一覧から引き継ぐ）
 - 実装するファイル一覧（ViewModel・View）
 - ViewModelの依存関係（依存するRepositoryプロトコルと用途）
@@ -49,6 +47,15 @@ spec と同じディレクトリに `plan.md` を生成する。
 
 > [!IMPORTANT]
 > 人間レビューポイント: UITest動画撮影シナリオ一覧
+
+## タスク分割
+
+| # | ブランチ名 | 内容 | PR |
+|---|-----------|------|----|
+| 1 | feature/shared-components | 共有コンポーネント（Model・Repository） | PR #1 |
+| 2 | feature/[画面名] | [画面名]の実装 | PR #2 |
+| 3 | feature/[画面名] | [画面名]の実装 | PR #3 |
+| ... | | | |
 ```
 
 ---
@@ -76,7 +83,7 @@ enum Priority: String, Codable, CaseIterable {
 
 ---
 
-## Step 4: ViewModelの依存関係の記述ルール
+## Step 5: ViewModelの依存関係の記述ルール
 
 各画面PRのViewModelについて、依存するRepositoryプロトコルを以下のフォーマットで記述する：
 
@@ -94,7 +101,7 @@ enum Priority: String, Codable, CaseIterable {
 
 ---
 
-## Step 4: テストケースの記述ルール
+## Step 6: テストケースの記述ルール
 
 受け入れ条件を1つずつテストケースに落とし込む。以下のフォーマットで記述する：
 
@@ -112,7 +119,7 @@ enum Priority: String, Codable, CaseIterable {
 
 ---
 
-## Step 5: UITest動画撮影シナリオの記述ルール
+## Step 7: UITest動画撮影シナリオの記述ルール
 
 各画面PRについて、PRに添付する動画のシナリオを記述する。主要なユーザー操作フローを対象にする。
 
@@ -130,6 +137,6 @@ enum Priority: String, Codable, CaseIterable {
 
 ---
 
-## Step 6: 完了報告
+## Step 8: 完了報告
 
 生成した `plan.md` のパスをユーザーに報告し、テストケースのレビューを促す。
