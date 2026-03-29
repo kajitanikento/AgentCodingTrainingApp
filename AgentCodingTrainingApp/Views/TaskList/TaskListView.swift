@@ -113,6 +113,7 @@ struct TaskListView: View {
                     .stroke(Color.black.opacity(0.1), lineWidth: 1)
             )
         }
+        .accessibilityIdentifier("filter-button")
     }
 }
 
@@ -130,6 +131,7 @@ private struct TaskListItemView: View {
                     .font(.system(size: 16))
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("toggle-complete-\(task.id)")
 
             VStack(alignment: .leading, spacing: 8) {
                 Text(task.title)
@@ -156,6 +158,7 @@ private struct TaskListItemView: View {
                     .foregroundStyle(.secondary)
                     .frame(width: 48, height: 48)
             }
+            .accessibilityIdentifier("menu-\(task.id)")
         }
         .padding(17)
         .background(Color(.systemBackground))

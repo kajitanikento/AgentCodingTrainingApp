@@ -15,6 +15,12 @@ private enum LaunchScreen: String {
 
 @main
 struct AgentCodingTrainingAppApp: App {
+    init() {
+        if ProcessInfo.processInfo.environment["UITEST_SEED_DATA"] == "1" {
+            UITestDataSeeder.seed()
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             switch LaunchScreen.resolve(from: ProcessInfo.processInfo.arguments) {
