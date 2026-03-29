@@ -39,8 +39,9 @@ struct TaskListView: View {
             }
         }
         .sheet(isPresented: $isShowingFilterSelection) {
-            // PR #5 で実装
-            Text("フィルター選択")
+            FilterSelectionView(currentFilter: viewModel.filter) { newFilter in
+                Task { await viewModel.selectFilter(newFilter) }
+            }
         }
         .alert("タスクを削除しますか？", isPresented: .init(
             get: { taskToDelete != nil },
