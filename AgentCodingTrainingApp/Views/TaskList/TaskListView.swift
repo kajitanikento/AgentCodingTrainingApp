@@ -34,8 +34,9 @@ struct TaskListView: View {
             }
         }
         .sheet(item: $taskToEdit) { task in
-            // PR #4 で実装
-            Text("タスク編集")
+            EditTaskView(task: task) {
+                Task { await viewModel.fetchAll() }
+            }
         }
         .sheet(isPresented: $isShowingFilterSelection) {
             // PR #5 で実装

@@ -67,6 +67,17 @@ func test...() {
 }
 ```
 
+### UITest（動画撮影用）
+
+plan.md に「UITest動画撮影シナリオ」がある場合は以下を必ず実施する：
+
+1. **UITestファイルを作成する** — `AgentCodingTrainingAppUITests/<画面名>/` に `XCTestCase` で実装する
+2. **アクセシビリティ識別子を付与する** — UITestから操作するUI要素に `.accessibilityIdentifier("...")` を付与する。識別子はタップ対象ごとにユニークにする（例: `"toggle-complete-\(task.id)"`）
+3. **テストデータを準備する** — UITestはUserDefaultsに直接書き込めないため、`UITEST_SEED_DATA=1` 環境変数を使った `UITestDataSeeder` パターンでデータを注入する
+4. **実際にビルド・実行して成功を確認する** — `xcodebuild test -only-testing:...` でテストが1件以上実行され、PASS することを確認する（「Executed 0 tests」はテストが見つかっていないのでNG）
+   - `-only-testing` の形式は `<ターゲット>/<クラス名>/<メソッド名>`（ディレクトリ名は含めない）
+5. **動画を撮影する** — `/record` スキルで録画する
+
 ---
 
 ## Step 6: コミット

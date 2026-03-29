@@ -39,6 +39,21 @@ UIに変更がある場合、変更した画面・確認した状態・スクリ
 - スクリーンショット: 静的な状態確認に使う
 - 動画: plan.mdのUITest動画撮影シナリオに従い `/record` スキルで撮影してPRに添付する
 
+#### 動画の添付手順
+
+1. `/record` スキルで撮影した動画（`TestArtifacts/` に出力される）を `artifacts/<scope>/video/` にコピーしてコミットする
+   ```
+   cp TestArtifacts/<テスト名>_compressed.mp4 artifacts/1st-scope/video/<テスト名>.mp4
+   git add artifacts/
+   ```
+2. PRボディのUI確認セクションに **絶対URL** でリンクを貼る（相対パスはcompare画面に飛ぶためNG）
+   ```markdown
+   | シナリオ | 動画 |
+   |---------|------|
+   | `testXxx` — 操作の説明 | [testXxx.mp4](https://github.com/<owner>/<repo>/raw/<branch>/artifacts/1st-scope/video/testXxx.mp4) |
+   ```
+   - ブランチ名はPR作成時点のfeatureブランチ名を使う
+
 ---
 
 ## PR作成
