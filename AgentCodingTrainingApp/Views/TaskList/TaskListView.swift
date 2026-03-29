@@ -29,8 +29,9 @@ struct TaskListView: View {
             await viewModel.fetchAll()
         }
         .sheet(isPresented: $isShowingAddTask) {
-            // PR #3 で実装
-            Text("タスク作成")
+            AddTaskView {
+                Task { await viewModel.fetchAll() }
+            }
         }
         .sheet(item: $taskToEdit) { task in
             // PR #4 で実装
