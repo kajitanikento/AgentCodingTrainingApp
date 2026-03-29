@@ -31,6 +31,7 @@ spec と同じディレクトリに `plan.md` を生成する。
 
 ## 共有コンポーネント（PR #1）
 - 実装するファイル一覧（Model・Repository・共有UIコンポーネントなど）
+- Modelのコード定義（Swiftコードブロック） ※人間レビューポイント
 - テストケース一覧 ※人間レビューポイント
 
 ## [画面名]（PR #2〜）
@@ -44,7 +45,30 @@ spec と同じディレクトリに `plan.md` を生成する。
 
 ---
 
-## Step 3: ViewModelの依存関係の記述ルール
+## Step 3: Modelのコード定義の記述ルール
+
+共有コンポーネントPRのModelについて、specのデータモデル定義を元にSwiftコードブロックで記述する。
+
+```swift
+struct Task: Identifiable, Codable, Equatable {
+    let id: UUID
+    var title: String
+    // ...
+}
+
+enum Priority: String, Codable, CaseIterable {
+    case high
+    // ...
+}
+```
+
+- struct / enum / protocol をすべて記述する
+- プロパティにはコメントで必須・任意・デフォルト値を明記する
+- specのバリデーションルールをコメントで添える
+
+---
+
+## Step 4: ViewModelの依存関係の記述ルール
 
 各画面PRのViewModelについて、依存するRepositoryプロトコルを以下のフォーマットで記述する：
 
