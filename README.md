@@ -7,11 +7,10 @@ CodingAgentでのアプリ開発を試すためのサンプルプロジェクト
 TODO管理アプリを題材にPRD・設計書・Figmaを用意し、Agentに自走で実装させる仕組みを作り、より良いAgentへの指示スキルを検証することを目的としています
 
 ## ドキュメント
+### 1st scope
 
-| | |
-|--|--|
-| PRD | [1st-scope](design-document/1st-scope/prd.md) |
-| 設計書 | [1st-scope](design-document/1st-scope/spec.md) |
+- [PRD](design-document/1st-scope/prd.md)
+- [Spec](design-document/1st-scope/spec.md)
 
 ## Figma
 
